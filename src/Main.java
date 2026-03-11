@@ -1,30 +1,39 @@
 public class Main {
-    public static class ElevatorButton{
-        private int targetFloor;
+    public static class BankAccount{
+        private int accountNumber;
+        private double balance;
 
-        public int getTargetFloor(){
-            System.out.println(targetFloor);
-            return targetFloor;
+        public void setBalance(double balance) {
+            this.balance = balance;
         }
 
-        public void setTargetFloor(int targetFloor) {
-            if(targetFloor >=0 && targetFloor <= 20){
-                System.out.println("Вы успешно поднялись на этаж: " + targetFloor);
-                this.targetFloor = targetFloor;
-            }else{
-                System.out.println("Ошибка! этажи в диапазоне от 0 - 20, а указанный этаж: " + targetFloor);
+        public double getBalance(){
+            return balance;
+        }
+
+        public double deposit(double amount){
+            if(amount > 0){
+                balance += amount;
+            } else {System.out.println("Сумма для депозита не может быть меньше или равна нулю!");}
+            return balance;
+        }
+        public double withdraw(double amount){
+            if(amount <= balance){
+                balance -= amount;
+            } else{
+                System.out.println("Сумма снятия не может превышать текущий баланс!");
             }
+            return balance;
         }
     }
     public static void main(String[] args){
-        ElevatorButton button = new ElevatorButton();
+        BankAccount max = new BankAccount();
 
-        button.setTargetFloor(-12);
-
-        button.getTargetFloor();
-
-        button.setTargetFloor(13);
-
+        max.setBalance(1000);
+        max.deposit(1000);
+        System.out.println(max.getBalance());
+        max.withdraw(3000);
+        max.withdraw(500);
+        System.out.println(max.getBalance());
     }
-
 }

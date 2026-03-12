@@ -1,36 +1,28 @@
 public class Main {
-    public static class Thermostat{
-
-        private int temperature;
-
-        public int startTemperature(){
-            temperature = 50;
-            return temperature;
-        }
-
-        public int getTemperature(){
-
-            return temperature;
-        }
-
-        public int setTemperature(int amount){
-            if(amount >= -50 && amount <= 50){
-                temperature = amount;
-                System.out.println("Температура изменена на " + amount);
-            } else {
-                System.out.println("Температура должна быть в диапазоне от -50 до +50 градусов");
-            }
-            return temperature;
-        }
-
+    public static class Vehicle{
+        String brand;
+        int speed;
     }
 
+    public static class Car extends Vehicle{
+        int fuelType;
+    }
+    public static class Bicycle extends Vehicle {
+        boolean hasBell;
+    }
     public static void main(String[] args){
-        Thermostat t = new Thermostat();
-        t.startTemperature();
-        System.out.println(t.getTemperature());
-        t.setTemperature(25);
-        t.setTemperature(-50);
-        System.out.println(t.getTemperature());
+        Car car = new Car();
+        car.brand = "toyota";
+        car.speed = 130;
+        car.fuelType = 95;
+
+        Bicycle bicycle = new Bicycle();
+        bicycle.brand = "Stels";
+        bicycle.speed = 30;
+        bicycle.hasBell = true;
+
+        System.out.println(car.brand + " " + car.speed + " " + car.fuelType);
+
+        System.out.println(bicycle.brand + " " + bicycle.speed + " " + bicycle.hasBell);
     }
 }

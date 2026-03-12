@@ -1,39 +1,36 @@
 public class Main {
-    public static class BankAccount{
-        private int accountNumber;
-        private double balance;
+    public static class Thermostat{
 
-        public void setBalance(double balance) {
-            this.balance = balance;
+        private int temperature;
+
+        public int startTemperature(){
+            temperature = 50;
+            return temperature;
         }
 
-        public double getBalance(){
-            return balance;
+        public int getTemperature(){
+
+            return temperature;
         }
 
-        public double deposit(double amount){
-            if(amount > 0){
-                balance += amount;
-            } else {System.out.println("Сумма для депозита не может быть меньше или равна нулю!");}
-            return balance;
-        }
-        public double withdraw(double amount){
-            if(amount <= balance){
-                balance -= amount;
-            } else{
-                System.out.println("Сумма снятия не может превышать текущий баланс!");
+        public int setTemperature(int amount){
+            if(amount >= -50 && amount <= 50){
+                temperature = amount;
+                System.out.println("Температура изменена на " + amount);
+            } else {
+                System.out.println("Температура должна быть в диапазоне от -50 до +50 градусов");
             }
-            return balance;
+            return temperature;
         }
-    }
-    public static void main(String[] args){
-        BankAccount max = new BankAccount();
 
-        max.setBalance(1000);
-        max.deposit(1000);
-        System.out.println(max.getBalance());
-        max.withdraw(3000);
-        max.withdraw(500);
-        System.out.println(max.getBalance());
+    }
+
+    public static void main(String[] args){
+        Thermostat t = new Thermostat();
+        t.startTemperature();
+        System.out.println(t.getTemperature());
+        t.setTemperature(25);
+        t.setTemperature(-50);
+        System.out.println(t.getTemperature());
     }
 }

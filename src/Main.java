@@ -1,43 +1,46 @@
 public class Main {
-    public static class Shape{
-        public double getArea(){
-            return 0;
-        }
-    }
-    public static class Circle extends Shape{
-        private double radius;
-        public Circle(double radius){
-            this.radius = radius;
-        }
-
+    public interface Animal{ void sayName (); void makeSound();}
+    public static class Dog implements Animal {
         @Override
-        public double getArea() {
-            return radius * radius * Math.PI;
+        public void sayName(){
+            System.out.println("Собайка");
         }
-    }
-
-    public static class Rectangle extends  Shape{
-        private double width;
-        private double height;
-
-        public Rectangle(double width, double height){
-            this.width = width;
-            this.height = height;
-        }
-
         @Override
-        public double getArea() {
-            return width * height;
+        public void makeSound(){
+            System.out.println("Гау");
         }
     }
+    public static class Cat implements Animal {
+        @Override
+        public void sayName(){
+            System.out.println("Котейка");
+        }
+        @Override
+        public void makeSound(){
+            System.out.println("Мяу");
+        }
+    }
+    public static class Cow implements Animal {
+        @Override
+        public void sayName(){
+            System.out.println("Коровка");
+        }
+        @Override
+        public void makeSound(){
+            System.out.println("муу");
+        }
+    }
+
     public static void main(String[] args){
-        Shape[] s = {
-                new Circle(5),
-                new Rectangle(10,4),
-                new Circle(9)
+        Animal[] a = {
+                new Cat(),
+                new Dog(),
+                new Cow()
         };
-        for(Shape shape : s) {
-            System.out.println("Площадь: " + shape.getArea());
+        for(Animal animal : a){
+            animal.sayName();
+            animal.makeSound();
+
         }
     }
 }

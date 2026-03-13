@@ -1,53 +1,43 @@
 public class Main {
-    public static class Employee {
-        private String name;
-        private int baseSalary;
-
-        public Employee(String name, int baseSalary){
-            this.name = name;
-            this.baseSalary = baseSalary;
-        }
-
-        public String getName(){
-            return name;
-        }
-
-        public int getBaseSalary() {
-            return baseSalary;
-        }
-
-        public int calculateSalary(){
-            return baseSalary;
+    public static class Shape{
+        public double getArea(){
+            return 0;
         }
     }
-    public static class Manager extends Employee {
-        public Manager(String name, int baseSalary){
-            super(name,baseSalary);
+    public static class Circle extends Shape{
+        private double radius;
+        public Circle(double radius){
+            this.radius = radius;
         }
 
         @Override
-        public int calculateSalary(){
-            return super.calculateSalary() + 20000;
+        public double getArea() {
+            return radius * radius * Math.PI;
         }
     }
-    public static class Intern extends Employee {
-        public Intern(String name, int baseSalary){
-            super(name,baseSalary);
+
+    public static class Rectangle extends  Shape{
+        private double width;
+        private double height;
+
+        public Rectangle(double width, double height){
+            this.width = width;
+            this.height = height;
         }
 
         @Override
-        public int calculateSalary(){
-            return super.calculateSalary() / 2;
+        public double getArea() {
+            return width * height;
         }
     }
     public static void main(String[] args){
-            Employee[] employees = {
-                    new Manager("Директор",100000),
-                    new Intern("Стажер Петя", 30000),
-                    new Intern("Стажер Ваня", 50000)
-            };
-            for(Employee emp : employees){
-                System.out.println(emp.getName() + ": " + emp.calculateSalary());
-            }
+        Shape[] s = {
+                new Circle(5),
+                new Rectangle(10,4),
+                new Circle(9)
+        };
+        for(Shape shape : s) {
+            System.out.println("Площадь: " + shape.getArea());
+        }
     }
 }

@@ -1,32 +1,34 @@
 public class Main {
-    public static interface PaymentMethod{void pay(double amount);}
+    public static interface Notifier{void send(String message);}
 
-    public static class CreditCard implements PaymentMethod{
+    public static class EmailNotifier implements Notifier{
         @Override
-        public void pay(double amount){
-            System.out.println("Оплата картой прошла успешно. Сумма: "+ amount);
+        public void send(String message){
+            System.out.println("Сообщение " + message + " отправлено на почту");
         }
     }
-    public static class PayPal implements PaymentMethod{
+
+    public static class SMSNotifier implements Notifier{
         @Override
-        public void pay(double amount){
-            System.out.println("Оплата через PayPal прошла успешно. Сумма: " + amount);
+        public void send(String message){
+            System.out.println("Сообщение " + message + " отправлено по SMS");
         }
     }
-    public static class Cash implements PaymentMethod{
+
+    public static class PushNotifier implements Notifier{
         @Override
-        public void pay(double amount){
-            System.out.println("Оплата наличными прошла успешно. Сумма: " + amount);
+        public void send(String message){
+            System.out.println("Сообщение " + message + " отправлено пуш-уведомлением");
         }
     }
     public static void main(String[] args){
-        PaymentMethod[] any = {
-                new CreditCard(),
-                new PayPal(),
-                new Cash()
+        Notifier[] not = {
+                new EmailNotifier(),
+                new SMSNotifier(),
+                new PushNotifier()
         };
-        for(PaymentMethod anyone: any){
-            anyone.pay(1000);
+        for( Notifier b : not){
+            b.send("А вы уже увидели эти вкусные цены?");
         }
     }
 }

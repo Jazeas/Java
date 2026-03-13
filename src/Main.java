@@ -1,46 +1,32 @@
 public class Main {
-    public interface Animal{ void sayName (); void makeSound();}
-    public static class Dog implements Animal {
-        @Override
-        public void sayName(){
-            System.out.println("Собайка");
-        }
-        @Override
-        public void makeSound(){
-            System.out.println("Гау");
-        }
-    }
-    public static class Cat implements Animal {
-        @Override
-        public void sayName(){
-            System.out.println("Котейка");
-        }
-        @Override
-        public void makeSound(){
-            System.out.println("Мяу");
-        }
-    }
-    public static class Cow implements Animal {
-        @Override
-        public void sayName(){
-            System.out.println("Коровка");
-        }
-        @Override
-        public void makeSound(){
-            System.out.println("муу");
-        }
-    }
+    public static interface PaymentMethod{void pay(double amount);}
 
+    public static class CreditCard implements PaymentMethod{
+        @Override
+        public void pay(double amount){
+            System.out.println("Оплата картой прошла успешно. Сумма: "+ amount);
+        }
+    }
+    public static class PayPal implements PaymentMethod{
+        @Override
+        public void pay(double amount){
+            System.out.println("Оплата через PayPal прошла успешно. Сумма: " + amount);
+        }
+    }
+    public static class Cash implements PaymentMethod{
+        @Override
+        public void pay(double amount){
+            System.out.println("Оплата наличными прошла успешно. Сумма: " + amount);
+        }
+    }
     public static void main(String[] args){
-        Animal[] a = {
-                new Cat(),
-                new Dog(),
-                new Cow()
+        PaymentMethod[] any = {
+                new CreditCard(),
+                new PayPal(),
+                new Cash()
         };
-        for(Animal animal : a){
-            animal.sayName();
-            animal.makeSound();
-
+        for(PaymentMethod anyone: any){
+            anyone.pay(1000);
         }
     }
 }

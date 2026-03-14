@@ -1,34 +1,31 @@
 public class Main {
-    public static interface Notifier{void send(String message);}
+    public static abstract class Vehicle{
+        private String brand;
 
-    public static class EmailNotifier implements Notifier{
+        public void setBrand(String brand){
+            this.brand = brand;
+        }
+        public abstract void move();
+    }
+    public static class Car extends Vehicle{
         @Override
-        public void send(String message){
-            System.out.println("Сообщение " + message + " отправлено на почту");
+        public void move(){
+            System.out.println("Машина едет по дороге");
         }
     }
-
-    public static class SMSNotifier implements Notifier{
+    public static class Bike extends  Vehicle{
         @Override
-        public void send(String message){
-            System.out.println("Сообщение " + message + " отправлено по SMS");
-        }
-    }
-
-    public static class PushNotifier implements Notifier{
-        @Override
-        public void send(String message){
-            System.out.println("Сообщение " + message + " отправлено пуш-уведомлением");
+        public void move(){
+            System.out.println("Велосипед крутит педали");
         }
     }
     public static void main(String[] args){
-        Notifier[] not = {
-                new EmailNotifier(),
-                new SMSNotifier(),
-                new PushNotifier()
+        Vehicle[] vehicles = {
+                new Car(),
+                new Bike()
         };
-        for( Notifier b : not){
-            b.send("А вы уже увидели эти вкусные цены?");
+        for( Vehicle veh : vehicles){
+            veh.move();
         }
     }
 }

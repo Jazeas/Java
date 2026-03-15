@@ -5,32 +5,24 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args){
-        List<Integer> numbers = new ArrayList<>();
-        numbers.add(4);
-        numbers.add(7);
-        numbers.add(2);
-        numbers.add(9);
-        numbers.add(12);
-        numbers.add(5);
-        numbers.add(8);
-        numbers.add(3);
+        List<Integer> duplicate = new ArrayList<>();
+        List<Integer> withoutDuplicates = new ArrayList<>();
 
-        List<Integer> chet = new ArrayList<>();
-        int sum = 0;
-        int max = 0;
-        for(int num : numbers){
-            if (num % 2 == 0){
-                chet.add(num);
-                sum += num;
-            }
-            if (max < num){
-                max = num;
+        duplicate.add(1);
+        duplicate.add(3);
+        duplicate.add(5);
+        duplicate.add(3);
+        duplicate.add(7);
+        duplicate.add(1);
+        duplicate.add(9);
+        duplicate.add(5);
+        duplicate.add(3);
+
+        for(int forcheck : duplicate){
+            if(!withoutDuplicates.contains(forcheck)){
+                withoutDuplicates.add(forcheck);
             }
         }
-        System.out.println(numbers);
-        System.out.println("Четные цифры из списка: "+chet);
-        System.out.println("Сумма четных чисел равна: "+ sum);
-        System.out.println("Максимальный элемент списка: " + max);
-
+        System.out.println("Список без повторений + сохранен порядок первых вхождений: "+withoutDuplicates);
     }
 }

@@ -5,25 +5,32 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        List<String> up = new ArrayList<>();
+        List<Integer> filt = new ArrayList<>();
+        filt.add(9);
+        filt.add(11);
+        filt.add(11);
+        filt.add(11);
+        filt.add(22);
+        filt.add(3);
+        filt.add(45);
+        filt.add(12);
+        filt.add(6);
+        filt.add(31);
 
-        up.add("кот");
-        up.add("собака");
-        up.add("слон");
-        up.add("тигр");
-        up.add("лев");
+//        for (int i = filt.size() - 1; i >= 0; i--) {
+//            if(filt.get(i) > 10){
+//            } else {
+//                filt.remove(i);
+//
+//            }
+//        }
 
-        for (int i = 0; i < up.size(); i++) {
-            String original = up.get(i);
-            up.set(i, original.toUpperCase());
+
+        System.out.println(filt);
+        for (int i = filt.size() - 1; i >= 0; i--) {
+            if(filt.get(i) % 3 != 0 || filt.get(i) > 10){}
+            else{filt.remove(i);}
         }
-        System.out.println(up);
-
-        List<String> uplen = new ArrayList<>();
-        for (int i = 0; i < up.size(); i++) {
-            int len = up.get(i).length();
-            uplen.add(String.valueOf(len));
-        }
-        System.out.println(uplen);
+        System.out.println("И не делятся на 3 и больше 10: "+filt);
     }
 }

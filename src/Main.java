@@ -5,31 +5,24 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
-        ArrayList<String> list = new ArrayList<>();
-        list.add("Москва");
-        list.add("Питер");
-        list.add("Самара");
-        list.add("Таганрок");
-        list.add("Владивосток");
+    public static void main(String[] args){
 
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
+        List<Integer> nums = new ArrayList<>();
+        nums.add(10);
+        nums.add(20);
+        nums.add(30);
+        nums.add(40);
+        nums.add(50);
 
-        System.out.println("========");
+        System.out.println(nums.get(0) + " " + nums.get(2) +" " + nums.getLast());
 
-        for (String item : list) {
-            System.out.println(item);
-        }
+        nums.set(1,99);
 
-        System.out.println("========");
+        nums.addFirst(5);
 
-        Iterator<String> it = list.iterator();
+        System.out.println(nums.get(0) + " " + nums.get(2));
 
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
+        System.out.println(nums);
 
 
     }

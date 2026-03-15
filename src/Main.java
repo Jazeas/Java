@@ -6,24 +6,25 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args){
+        List<String> fruit = new ArrayList<>();
 
-        List<Integer> nums = new ArrayList<>();
-        nums.add(10);
-        nums.add(20);
-        nums.add(30);
-        nums.add(40);
-        nums.add(50);
+        fruit.add("яблоко");
+        fruit.add("банан");
+        fruit.add("апельсин");
+        fruit.add("банан");
+        fruit.add("киви");
 
-        System.out.println(nums.get(0) + " " + nums.get(2) +" " + nums.getLast());
+        System.out.println("Есть ли яблоко в списке "+fruit.contains("яблоко"));
+        System.out.println("Под каким индексом первый банан "+fruit.indexOf("банан"));
+        System.out.println("Под каким индексом последний банан "+fruit.lastIndexOf("банан"));
 
-        nums.set(1,99);
+        int count = 0;
 
-        nums.addFirst(5);
-
-        System.out.println(nums.get(0) + " " + nums.get(2));
-
-        System.out.println(nums);
-
-
+        for(String fruits : fruit){
+            if(fruits == "банан"){
+                count++;
+            }
+        }
+        System.out.println("Бананы встречаются "+count);
     }
 }

@@ -4,25 +4,26 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args){
-        List<Integer> duplicate = new ArrayList<>();
-        List<Integer> withoutDuplicates = new ArrayList<>();
+    public static void main(String[] args) {
+        List<String> up = new ArrayList<>();
 
-        duplicate.add(1);
-        duplicate.add(3);
-        duplicate.add(5);
-        duplicate.add(3);
-        duplicate.add(7);
-        duplicate.add(1);
-        duplicate.add(9);
-        duplicate.add(5);
-        duplicate.add(3);
+        up.add("кот");
+        up.add("собака");
+        up.add("слон");
+        up.add("тигр");
+        up.add("лев");
 
-        for(int forcheck : duplicate){
-            if(!withoutDuplicates.contains(forcheck)){
-                withoutDuplicates.add(forcheck);
-            }
+        for (int i = 0; i < up.size(); i++) {
+            String original = up.get(i);
+            up.set(i, original.toUpperCase());
         }
-        System.out.println("Список без повторений + сохранен порядок первых вхождений: "+withoutDuplicates);
+        System.out.println(up);
+
+        List<String> uplen = new ArrayList<>();
+        for (int i = 0; i < up.size(); i++) {
+            int len = up.get(i).length();
+            uplen.add(String.valueOf(len));
+        }
+        System.out.println(uplen);
     }
 }

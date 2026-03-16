@@ -1,36 +1,15 @@
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        List<Integer> filt = new ArrayList<>();
-        filt.add(9);
-        filt.add(11);
-        filt.add(11);
-        filt.add(11);
-        filt.add(22);
-        filt.add(3);
-        filt.add(45);
-        filt.add(12);
-        filt.add(6);
-        filt.add(31);
+        List<Integer> numbers = List.of(3, 7, 10, 15, 20, 25);
 
-//        for (int i = filt.size() - 1; i >= 0; i--) {
-//            if(filt.get(i) > 10){
-//            } else {
-//                filt.remove(i);
-//
-//            }
-//        }
+        List<Integer> result =
+        numbers.stream()
+                .filter(n -> n > 10)
+                .toList();
+        System.out.println(result);
 
-
-        System.out.println(filt);
-        for (int i = filt.size() - 1; i >= 0; i--) {
-            if(filt.get(i) % 3 != 0 || filt.get(i) > 10){}
-            else{filt.remove(i);}
-        }
-        System.out.println("И не делятся на 3 и больше 10: "+filt);
     }
 }

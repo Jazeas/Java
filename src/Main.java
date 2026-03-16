@@ -4,9 +4,9 @@ import java.util.stream.Collectors;
 public class Main {
 
     public static void main(String[] args) {
-        List<String> words = List.of("Java", "Spring", "Stream");
+        List<String> words = List.of("Java", "Python", "JS", "Go");
 
-        List<Integer> result = words.stream().map(n -> n.length()).collect(Collectors.toList());
+        List<String> result = words.stream().filter(n -> n.length() > 3).collect(Collectors.toList());
         System.out.println(result);
     }
 }

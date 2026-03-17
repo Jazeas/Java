@@ -4,21 +4,24 @@ import java.util.*;
 
 
 public class Main {
-    public static void readFirstFileLine(String fileName){
-        try{
-            File file = new File(fileName);
-            Scanner scanner = new Scanner(file);
-
-            if(scanner.hasNext()){
-                String firstLine = scanner.nextLine();
-                System.out.println("Первая строка файла: " + firstLine);
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Файл не найден");
+    public static void checkAge(int age) throws TooYoungException{
+        if (age < 18){ throw new TooYoungException("Возраст " + age + "меньше 18"); }
+        else {
+            System.out.println("Возраст ок");
+        }
+    }
+    public static class TooYoungException extends Exception{
+        public TooYoungException(String message){
+            System.out.println("Возраст слишком мал");
         }
     }
     public static void main(String[] args) {
-        readFirstFileLine("data.txt");
+        try {
+            checkAge(15);
+        } catch (TooYoungException e){
+            System.out.println("Ошибка: " + e);
+        }
+
+
     }
 }

@@ -1,27 +1,24 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 public class Main {
+    public static void readFirstFileLine(String fileName){
+        try{
+            File file = new File(fileName);
+            Scanner scanner = new Scanner(file);
 
+            if(scanner.hasNext()){
+                String firstLine = scanner.nextLine();
+                System.out.println("Первая строка файла: " + firstLine);
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Файл не найден");
+        }
+    }
     public static void main(String[] args) {
-        String s1 = "123";
-        String s2 = "abc";
-        int result = 0;
-
-        try {
-            System.out.println("Работа над строкой " + s1 + " ...");
-            int num1 = Integer.parseInt(s1);
-            System.out.println(num1);
-        } catch (NumberFormatException e ){
-            System.out.println("Неправильный формат: " + s1);
-        }
-        try {
-            System.out.println("Работа над строкой " + s2 + " ...");
-            int num2 = Integer.parseInt(s2);
-            System.out.println(num2);
-        } catch (NumberFormatException e ){
-            System.out.println("Неправильный формат: " + s2);
-        }
-
+        readFirstFileLine("data.txt");
     }
 }

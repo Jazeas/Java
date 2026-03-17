@@ -2,20 +2,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
-    public static int divide(int a, int b){
-        try {
-            return a / b;
-        }catch (ArithmeticException e){
-            System.out.println("Деление на ноль невозможно");
-            return 0;
-        }
-    }
+
     public static void main(String[] args) {
-        int a = 10;
-        int b = 0;
+        int[] arr = {1, 2, 3};
 
-        int result = divide(a,b);
-        System.out.println(result);
-
+        try {
+            System.out.println(arr[5]);
+        } catch (ArrayIndexOutOfBoundsException e ){
+            System.out.println("Такого индекса нет");
+        }
     }
 }

@@ -6,8 +6,9 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Files.write(
-                Paths.get("file.txt"),
-                List.of("Hello, File I/O!")
-        );
+        List<String> lines = Files.readAllLines(Paths.get("file.txt"));
+
+        for(String line : lines){
+            System.out.println(line);
+        }
 }}

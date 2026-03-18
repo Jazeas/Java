@@ -1,27 +1,13 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
-
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class Main {
-    public static void checkAge(int age) throws TooYoungException{
-        if (age < 18){ throw new TooYoungException("Возраст " + age + "меньше 18"); }
-        else {
-            System.out.println("Возраст ок");
-        }
-    }
-    public static class TooYoungException extends Exception{
-        public TooYoungException(String message){
-            System.out.println("Возраст слишком мал");
-        }
-    }
-    public static void main(String[] args) {
-        try {
-            checkAge(15);
-        } catch (TooYoungException e){
-            System.out.println("Ошибка: " + e);
-        }
 
-
-    }
-}
+    public static void main(String[] args) throws IOException {
+        Files.write(
+                Paths.get("file.txt"),
+                List.of("Hello, File I/O!")
+        );
+}}

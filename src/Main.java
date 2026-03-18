@@ -7,9 +7,13 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Path source = Paths.get("file.txt");
-        List<String> lines = Files.readAllLines(source);
+        Files.write(Path.of("numbers.txt"), List.of("5", "10", "15", "20"));
+        List<String> stringNumbers = Files.readAllLines(Path.of("numbers.txt"));
 
-        Path toCopy = Paths.get("copy.txt");
-        Files.write(toCopy, lines);
+        int sum = 0;
+        for(String s : stringNumbers){
+            sum += Integer.parseInt(s);
+        }
+        Files.write(Path.of("sum.txt"), List.of(String.valueOf(sum)));
+        System.out.println(sum);
 }}

@@ -1,19 +1,14 @@
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
+
 
 public class Main {
+    static class MyRunnable implements Runnable{
 
-    public static void main(String[] args) throws IOException {
-        Files.write(Path.of("numbers.txt"), List.of("5", "10", "15", "20"));
-        List<String> stringNumbers = Files.readAllLines(Path.of("numbers.txt"));
-
-        int sum = 0;
-        for(String s : stringNumbers){
-            sum += Integer.parseInt(s);
+        public void run(){
+            System.out.println("Hello from thread");
         }
-        Files.write(Path.of("sum.txt"), List.of(String.valueOf(sum)));
-        System.out.println(sum);
+    }
+    public static void main(String[] args) throws IOException {
+    Thread t = new Thread(new MyRunnable());
+    t.start();
 }}

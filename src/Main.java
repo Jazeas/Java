@@ -1,14 +1,24 @@
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class Main {
-    static class MyRunnable implements Runnable{
 
-        public void run(){
-            System.out.println("Hello from thread");
-        }
-    }
     public static void main(String[] args) throws IOException {
-    Thread t = new Thread(new MyRunnable());
-    t.start();
+        ExecutorService executor = Executors.newFixedThreadPool(3);
+
+        executor.submit(() -> {
+                    System.out.println("task 1");
+                }
+        );
+        executor.submit(() -> {
+                    System.out.println("task 2");
+                }
+        );
+        executor.submit(() -> {
+                    System.out.println("task 3");
+                }
+        );
+        executor.shutdown();
 }}

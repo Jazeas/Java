@@ -1,24 +1,32 @@
 import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Main {
+    public static class Counter{
+        int value;
+    }
+    public static void main(String[] args) throws IOException, InterruptedException {
+        Counter counter = new Counter();
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                synchronized (counter){
+                counter.value++;}
+            }
+        });
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                synchronized (counter){
+                    counter.value++;}
+            }
+        });
+        t1.start();
+        t2.start();
 
-    public static void main(String[] args) throws IOException {
-        ExecutorService executor = Executors.newFixedThreadPool(3);
+        t1.join();
+        t2.join();
 
-        executor.submit(() -> {
-                    System.out.println("task 1");
-                }
-        );
-        executor.submit(() -> {
-                    System.out.println("task 2");
-                }
-        );
-        executor.submit(() -> {
-                    System.out.println("task 3");
-                }
-        );
-        executor.shutdown();
+        System.out.println(counter.value);
+
+
 }}
